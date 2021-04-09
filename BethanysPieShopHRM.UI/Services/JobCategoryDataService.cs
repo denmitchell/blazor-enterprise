@@ -18,13 +18,13 @@ namespace BethanysPieShopHRM.UI.Services
         public async Task<IEnumerable<JobCategory>> GetAllJobCategories()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<JobCategory>>
-                (await _httpClient.GetStreamAsync($"api/jobcategory"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/jobcategory"), Defaults.JsonSerializerOptions );
         }
 
         public async Task<JobCategory> GetJobCategoryById(int jobCategoryId)
         {
             return await JsonSerializer.DeserializeAsync<JobCategory>
-                (await _httpClient.GetStreamAsync($"api/jobcategory/{jobCategoryId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/jobcategory/{jobCategoryId}"), Defaults.JsonSerializerOptions );
         }
     }
 }

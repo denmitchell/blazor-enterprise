@@ -52,13 +52,13 @@ namespace BethanysPieShopHRM.UI.Data
         public async Task<IEnumerable<Survey>> GetAllSurveys()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Survey>>
-                (await _httpClient.GetStreamAsync($"api/Survey"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/Survey"), Defaults.JsonSerializerOptions );
         }
 
         public async Task<Survey> GetSurveyById(int surveyId)
         {
             return await JsonSerializer.DeserializeAsync<Survey>
-                (await _httpClient.GetStreamAsync($"api/Survey/{surveyId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/Survey/{surveyId}"), Defaults.JsonSerializerOptions );
         }
     }
 }

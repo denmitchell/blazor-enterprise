@@ -34,13 +34,13 @@ namespace BethanysPieShopHRM.UI.Services
         public async Task<IEnumerable<HRTask>> GetAllTasks()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<HRTask>>
-                (await _httpClient.GetStreamAsync($"api/Task"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/Task"), Defaults.JsonSerializerOptions );
         }
 
         public async Task<HRTask> GetTaskById(int taskId)
         {
             return await JsonSerializer.DeserializeAsync<HRTask>
-                (await _httpClient.GetStreamAsync($"api/Task/{taskId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/Task/{taskId}"), Defaults.JsonSerializerOptions );
         }
     }
 }

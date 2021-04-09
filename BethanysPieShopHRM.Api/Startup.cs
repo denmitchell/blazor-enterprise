@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Buffers;
 using System.Linq;
+using Microsoft.OpenApi.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BethanysPieShopHRM.Api
 {
@@ -43,11 +46,17 @@ namespace BethanysPieShopHRM.Api
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader());
             });
             services.AddControllers()
-                .AddNewtonsoftJson(options =>
+                .AddJsonOptions(configure =>
                 {
-                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    configure.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    configure.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
                 });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BethanysPieShopHRM.Api", Version = "v1" });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +65,9 @@ namespace BethanysPieShopHRM.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BethanysPieShopHRM.Api v1"));
+
             }
 
             app.UseHttpsRedirection();

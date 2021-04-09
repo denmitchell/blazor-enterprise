@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace BethanysPieShopHRM.UI.Pages
 {
-    public class EmployeeDetailBase : ComponentBase
+    public partial class EmployeeDetail
     {
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }

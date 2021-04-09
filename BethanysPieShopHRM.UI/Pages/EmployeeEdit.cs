@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace BethanysPieShopHRM.UI.Pages
 {
-    public class EmployeeEditBase : ComponentBase
+    public partial class EmployeeEdit
     {
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }

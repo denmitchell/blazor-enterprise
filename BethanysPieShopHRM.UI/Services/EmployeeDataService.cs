@@ -20,13 +20,13 @@ namespace BethanysPieShopHRM.UI.Services
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Employee>>
-                (await _httpClient.GetStreamAsync($"api/employee"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/employee"), Defaults.JsonSerializerOptions);
         }
 
         public async Task<Employee> GetEmployeeDetails(int employeeId)
         {
             return await JsonSerializer.DeserializeAsync<Employee>
-                (await _httpClient.GetStreamAsync($"api/employee/{employeeId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/employee/{employeeId}"), Defaults.JsonSerializerOptions);
         }
 
         public async Task<Employee> AddEmployee(Employee employee)

@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 using BethanysPieShopHRM.UI.Components;
 using BethanysPieShopHRM.UI.Services;
 using BethanysPieShopHRM.Shared;
-using BethanysPieShopHRM.UI.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 
 namespace BethanysPieShopHRM.UI.Pages
 {
-    public class EmployeeOverviewBase: ComponentBase
+    public partial class EmployeeOverview
     {
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
         [Inject]
-        public ILogger<EmployeeOverviewBase> Logger { get; set; }
+        public ILogger<EmployeeOverview> Logger { get; set; }
 
         public List<Employee> Employees { get; set; }
 

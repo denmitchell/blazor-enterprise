@@ -9,17 +9,18 @@ using Microsoft.AspNetCore.Components;
 
 namespace BethanysPieShopHRM.UI.Pages
 {
-    public class ExpenseOverviewBase: ComponentBase
+    public partial class StaffDirectory
     {
         [Inject]
-        public IExpenseDataService ExpenseService { get; set; }
+        public IEmployeeDataService EmployeeDataService { get; set; }
 
-        public List<Expense> Expenses { get; set; }
+        public List<Employee> Employees { get; set; }
 
+        protected AddEmployeeDialog AddEmployeeDialog { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Expenses = (await ExpenseService.GetAllExpenses()).ToList();
+            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
     }
 }

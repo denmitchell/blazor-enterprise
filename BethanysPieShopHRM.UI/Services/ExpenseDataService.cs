@@ -44,19 +44,19 @@ namespace BethanysPieShopHRM.UI.Services
         public async Task<IEnumerable<Expense>> GetAllExpenses()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Expense>>
-                (await _httpClient.GetStreamAsync($"api/expense"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/expense"), Defaults.JsonSerializerOptions );
         }
 
         public async Task<IEnumerable<Currency>> GetAllCurrencies()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Currency>>
-                (await _httpClient.GetStreamAsync($"api/currency"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/currency"), Defaults.JsonSerializerOptions );
         }
 
         public async Task<Expense> GetExpenseById(int expenseId)
         {
             return await JsonSerializer.DeserializeAsync<Expense>
-                (await _httpClient.GetStreamAsync($"api/expense/{expenseId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _httpClient.GetStreamAsync($"api/expense/{expenseId}"), Defaults.JsonSerializerOptions );
         }
     }
 }
